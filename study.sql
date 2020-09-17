@@ -52,6 +52,30 @@ Comandos utilizados no SSMS
         FROM Person.Person as P
         INNER JOIN Person.EmailAddress PE on p.BusinessEntityID = pe.BusinessEntityID
         inner join identifica qual tabela está sendo consultada, e determinar o termo em comum entre essas tabelas para que seja possível a identificação dos termos
-    
+    MAIS EXERCÍCIOS COM JOIN:
+        SELECT pr.ListPrice, pr.Name, pc.Name
+        FROM Production.Product Pr
+        INNER JOIN Production.ProductSubcategory PC on PC.ProductSubcategoryID = pr.ProductSubcategoryID
+
+        SELECT TOP 10 * (SELECIONA TODOS OS DADOS PRESENTES EM AMBAS AS TABELAS E AGREGA TODAS EM UMA ÚNICA TABELA)
+        FROM Person.BusinessEntityAddress BA
+        INNER JOIN Person.Address PA ON PA.AddressID = BA.AddressID
+
+        SELECT tb.BusinessEntityID, ta.Name, ta.PhoneNumberTypeID, tb.PhoneNumber
+        FROM person.PhoneNumberType ta 
+        INNER JOIN Person.PersonPhone tb on ta.PhoneNumberTypeID = tb.PhoneNumberTypeID
+
+        SELECT t2.AddressID, t2.City as "Cidade", t1.StateProvinceID, t1.Name as "Estado"
+        FROM person.StateProvince t1
+        INNER JOIN person.Address t2 on t1.StateProvinceID = t2.StateProvinceID
+
+    TIPOS DE JOIN:
+        INNER JOIN: retorna apenas os resultados que existem tanto na tabela A quanto na tabela B (intersecção de ambos);
+        FULL OUTER JOIN: Retorna valores correspondentes da tabela A e B quando são iguais, caso não existam valores correspondentes ele preencherá os campos com NULL;
+        LEFT OUTER JOIN (ou LEFT JOIN): Traz todos os valores da tabela A, mas apenas os valores correspondentes da tabela B, de modo que, caso os dados da tabela B sejam divergentes da tabela A, o valor será retornado como NULL;
+        RIGHT OUTER JOIN (ou RIGHT JOIN): Mesma condição que o acima, apenas invertendo os tabelas, em que todos os valores de B serão preenchidos enquanto apenas os correspondentes de A serão preenchidos.
+
+    UNION(usado para unier valores de tabelas e criar tabelas únicas)
+        
 *\
     
